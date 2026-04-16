@@ -111,25 +111,37 @@
 
     if (!cta || !footer) return;
 
+    const isMobile = () => window.innerWidth <= 820;
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
+          if (!isMobile()) {
+            cta.classList.remove("is-visible");
+            return;
+          }
+
           if (entry.isIntersecting) {
-            // Hide CTA when footer is visible
             cta.classList.remove("is-visible");
           } else {
-            // Show CTA otherwise
             cta.classList.add("is-visible");
           }
         });
       },
       {
         root: null,
-        threshold: 0.1,
+        threshold: 0,
+        rootMargin: "0px 0px -120px 0px",
       },
     );
 
     observer.observe(footer);
+
+    window.addEventListener("resize", () => {
+      if (!isMobile()) {
+        cta.classList.remove("is-visible");
+      }
+    });
   }
 
   function setupRevealAnimations() {

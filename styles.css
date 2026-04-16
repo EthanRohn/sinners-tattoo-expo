@@ -1168,6 +1168,12 @@ body.menu-open {
   box-shadow: 0 16px 36px rgba(214, 40, 57, 0.3);
 }
 
+@media (min-width: 821px) {
+  .floating-cta {
+    display: none;
+  }
+}
+
 .reveal {
   opacity: 0;
   transform: translateY(32px);
