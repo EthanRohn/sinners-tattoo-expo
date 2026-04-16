@@ -1334,6 +1334,10 @@ body.menu-open {
 }
 
 @media (max-width: 820px) {
+  .hero-meta {
+    display: none;
+  }
+
   .hero-content {
     display: flex;
     flex-direction: column;
@@ -1341,14 +1345,10 @@ body.menu-open {
   }
 
   .hero-copy {
-    margin-bottom: auto; /* pushes buttons down */
+    max-width: 100%;
   }
 
   .hero-actions {
     margin-top: auto;
-  }
-
-  .hero-cta-group {
-    width: 100%;
   }
 }
