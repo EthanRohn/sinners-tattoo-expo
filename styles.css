@@ -1153,25 +1153,32 @@ body.menu-open {
   bottom: 14px;
   z-index: 1250;
   width: min(calc(100% - 1.2rem), 460px);
-  transform: translate(-50%, calc(100% + 24px));
-  transition: transform 220ms ease;
+  opacity: 0;
+  visibility: hidden;
   pointer-events: none;
+  transform: translate(-50%, 20px);
+  transition:
+    opacity 220ms ease,
+    transform 220ms ease,
+    visibility 220ms ease;
 }
 
 .floating-cta.is-visible {
-  transform: translate(-50%, 0);
+  opacity: 1;
+  visibility: visible;
   pointer-events: auto;
-}
-
-.floating-cta .btn {
-  min-height: 56px;
-  box-shadow: 0 16px 36px rgba(214, 40, 57, 0.3);
+  transform: translate(-50%, 0);
 }
 
 @media (min-width: 821px) {
   .floating-cta {
     display: none;
   }
+}
+
+.floating-cta .btn {
+  min-height: 56px;
+  box-shadow: 0 16px 36px rgba(214, 40, 57, 0.3);
 }
 
 .reveal {
