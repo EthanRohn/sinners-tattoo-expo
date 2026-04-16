@@ -1341,7 +1341,7 @@ body.menu-open {
   .hero-content {
     display: flex;
     flex-direction: column;
-    min-height: calc(100svh - var(--header-height) - 40px);
+    min-height: calc(100svh - var(--header-height) - 50px);
   }
 
   .hero-copy {
