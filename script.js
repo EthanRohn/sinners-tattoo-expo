@@ -193,16 +193,23 @@
   }
 
   function setupVideoPlaybackFallback() {
-    const video = selectors.heroVideo;
+    const video = document.querySelector(".hero-video");
     if (!video) return;
 
-    const tryPlay = () => {
-      const playPromise = video.play();
+    // Safari-friendly autoplay state
+    video.muted = true;
+    video.defaultMuted = true;
+    video.playsInline = true;
+    video.setAttribute("muted", "");
+    video.setAttribute("playsinline", "");
+    video.setAttribute("webkit-playsinline", "");
 
-      if (playPromise && typeof playPromise.catch === "function") {
-        playPromise.catch(() => {
-          video.setAttribute("controls", "controls");
-        });
+    const tryPlay = async () => {
+      try {
+        await video.play();
+      } catch (error) {
+        console.warn("Autoplay blocked:", error);
+        video.setAttribute("controls", "controls");
       }
     };
 
@@ -218,9 +225,7 @@
         return;
       }
 
-      if (!state.prefersReducedMotion) {
-        tryPlay();
-      }
+      tryPlay();
     });
   }
 
