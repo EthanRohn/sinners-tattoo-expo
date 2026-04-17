@@ -14,6 +14,9 @@
     menuToggle: document.getElementById("menu-toggle"),
     siteNav: document.getElementById("site-nav"),
     siteNavLinks: document.querySelectorAll(".site-nav-link"),
+    statSection: document.querySelector(".hype-strip"),
+    statNumbers: document.querySelectorAll(".stat-number"),
+    gallerySlides: document.querySelectorAll(".gallery-slide"),
   };
 
   const state = {
@@ -30,6 +33,8 @@
     setupVideoPlaybackFallback();
     setupMobileCtaVisibility();
     setupMenu();
+    setupStatCounters();
+    setupGalleryCarousel();
   }
 
   function setupMenu() {
@@ -252,6 +257,91 @@
 
       tryPlay();
     });
+  }
+
+  function setupStatCounters() {
+    const { statSection, statNumbers } = selectors;
+    if (!statSection || !statNumbers.length) return;
+
+    let hasAnimated = false;
+
+    const formatValue = (value, prefix = "", suffix = "") => {
+      return `${prefix}${value.toLocaleString()}${suffix}`;
+    };
+
+    const animateCounter = (element) => {
+      const target = Number(element.dataset.target || 0);
+      const prefix = element.dataset.prefix || "";
+      const suffix = element.dataset.suffix || "";
+      const duration = 1800;
+      const startTime = performance.now();
+
+      const step = (currentTime) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+
+        const easedProgress = 1 - Math.pow(1 - progress, 3);
+        const currentValue = Math.round(target * easedProgress);
+
+        element.textContent = formatValue(currentValue, prefix, suffix);
+
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        } else {
+          element.textContent = formatValue(target, prefix, suffix);
+        }
+      };
+
+      requestAnimationFrame(step);
+    };
+
+    const startCounters = () => {
+      if (hasAnimated) return;
+      hasAnimated = true;
+      statNumbers.forEach((number) => animateCounter(number));
+    };
+
+    if (!("IntersectionObserver" in window)) {
+      startCounters();
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries, io) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          startCounters();
+          io.unobserve(entry.target);
+        });
+      },
+      {
+        threshold: 0.35,
+      },
+    );
+
+    observer.observe(statSection);
+  }
+
+  function setupGalleryCarousel() {
+    const { gallerySlides } = selectors;
+    if (!gallerySlides.length) return;
+
+    let currentIndex = 0;
+    const totalSlides = gallerySlides.length;
+    const intervalDuration = 5000;
+
+    const showSlide = (index) => {
+      gallerySlides.forEach((slide, slideIndex) => {
+        slide.classList.toggle("is-active", slideIndex === index);
+      });
+    };
+
+    showSlide(currentIndex);
+
+    window.setInterval(() => {
+      currentIndex = (currentIndex + 1) % totalSlides;
+      showSlide(currentIndex);
+    }, intervalDuration);
   }
 
   init();
