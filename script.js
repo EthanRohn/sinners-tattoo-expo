@@ -6,7 +6,7 @@
     floatingCta: document.getElementById("floating-cta"),
     hero: document.querySelector(".hero"),
     revealTargets: document.querySelectorAll(
-      ".section-heading, .artist-card, .lineup-card, .schedule-day, .tickets-panel, .feature-card, .gallery-item, .apply-card, .faq-item, .final-cta-panel",
+      ".section-heading, .intro-content, .artist-card, .lineup-card, .schedule-day, .tickets-panel, .feature-card, .gallery-item, .apply-card, .faq-item, .final-cta-panel",
     ),
     faqItems: document.querySelectorAll(".faq-item"),
     heroVideo: document.querySelector(".hero-video"),
@@ -328,7 +328,7 @@
 
     let currentIndex = 0;
     const totalSlides = gallerySlides.length;
-    const intervalDuration = 5000;
+    const intervalDuration = 6500;
 
     const showSlide = (index) => {
       gallerySlides.forEach((slide, slideIndex) => {

@@ -618,6 +618,12 @@ body.menu-open {
   font-weight: 600;
 }
 
+.event-card-values {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
 .scroll-indicator {
   position: absolute;
   left: 50%;
@@ -1095,7 +1101,7 @@ body.menu-open {
 .gallery-carousel-track {
   position: relative;
   height: 100%;
-  min-height: 620px;
+  min-height: 520px;
   overflow: hidden;
 
   border: 1px solid var(--border);
@@ -1108,42 +1114,19 @@ body.menu-open {
   position: absolute;
   inset: 0;
   margin: 0;
-
   opacity: 0;
   visibility: hidden;
-
-  transform: translateX(4%);
+  z-index: 0;
   transition:
-    opacity 1200ms ease,
-    transform 1400ms cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 1800ms ease,
+    visibility 1800ms ease;
+  overflow: hidden;
 }
 
 .gallery-slide.is-active {
   opacity: 1;
   visibility: visible;
-  transform: translateX(0);
   z-index: 1;
-}
-
-.gallery-slide::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-
-  background: linear-gradient(
-    90deg,
-    rgba(10, 10, 12, 1) 0%,
-    rgba(10, 10, 12, 0.6) 20%,
-    rgba(10, 10, 12, 0) 40%
-  );
-
-  opacity: 1;
-  transition: opacity 1200ms ease;
-}
-
-.gallery-slide.is-active::after {
-  opacity: 0;
 }
 
 .gallery-slide img {
@@ -1155,23 +1138,7 @@ body.menu-open {
   object-fit: cover;
   object-position: center center;
   filter: contrast(1.05) saturate(1.05);
-  transform: scale(1.04) translate3d(0, 0, 0);
-}
-
-.gallery-slide.is-active img {
-  animation: galleryDrift 6s ease-in-out both;
-}
-
-@keyframes galleryDrift {
-  0% {
-    transform: scale(1.03) translate3d(0, 0, 0);
-  }
-  50% {
-    transform: scale(1.05) translate3d(-0.3%, -0.3%, 0);
-  }
-  100% {
-    transform: scale(1.04) translate3d(0.3%, 0.3%, 0);
-  }
+  transform: none;
 }
 
 .gallery-carousel::after {
@@ -1633,4 +1600,212 @@ body.menu-open {
     opacity: 1;
     transform: none;
   }
+}
+
+.section-intro {
+  position: relative;
+  padding: 120px 0;
+}
+
+.intro-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 800px;
+}
+.intro-feature {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2vw, 1.6rem);
+  line-height: 1.1;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text);
+  opacity: 0.95;
+  max-width: auto;
+}
+
+.intro-body {
+  max-width: auto;
+}
+
+.intro-body p {
+  margin: 0 0 1.4rem;
+  color: rgba(245, 242, 235, 0.92);
+  font-size: 1.08rem;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.intro-body p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 1120px) {
+  .intro-layout {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .intro-feature,
+  .intro-body {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 560px) {
+  .section-intro {
+    padding: 96px 0;
+  }
+
+  .intro-body p {
+    font-size: 1rem;
+  }
+}
+
+.section-intro {
+  position: relative;
+  overflow: hidden;
+}
+
+.section-intro::after {
+  content: "";
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(50px);
+
+  width: clamp(300px, 50vw, 700px);
+  height: clamp(300px, 50vw, 700px);
+
+  background-image: url("assets/logo/sinners-logo.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  opacity: 0.14;
+  mix-blend-mode: normal;
+
+  pointer-events: none;
+  z-index: 0;
+}
+
+@media (max-width: 820px) {
+  .section-intro::after {
+    top: 50%;
+    left: 50%;
+    right: auto;
+
+    transform: translate(-50%, -50%);
+
+    width: clamp(260px, 80vw, 520px);
+    height: clamp(260px, 80vw, 520px);
+
+    opacity: 0.1;
+  }
+}
+
+.section-when-where {
+  position: relative;
+}
+
+.section-when-where .section-heading {
+  max-width: 860px;
+  margin: 0 auto 2.5rem auto; /* 👈 same centering as card */
+  text-align: left;
+}
+
+.when-where-card {
+  max-width: 860px;
+  margin: 0 auto; /* 👈 centers the card */
+
+  padding: 2.4rem;
+
+  border: 1px solid rgba(255, 154, 60, 0.2);
+  border-radius: var(--radius-lg);
+
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(214, 40, 57, 0.14),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(255, 154, 60, 0.12),
+      transparent 30%
+    ),
+    rgba(255, 255, 255, 0.03);
+
+  box-shadow: var(--shadow-lg);
+
+  text-align: center;
+}
+
+.when-where-venue,
+.when-where-note,
+.when-where-hotel {
+  margin: 0;
+  color: rgba(245, 242, 235, 0.92);
+  font-size: 1.08rem;
+  line-height: 1.5;
+}
+
+.when-where-venue {
+  margin-bottom: 1.5rem;
+}
+
+.when-where-venue strong,
+.when-where-hotel strong {
+  color: var(--text);
+  font-weight: 800;
+}
+
+.when-where-hours {
+  display: grid;
+  gap: 0.55rem;
+  margin-bottom: 1.5rem;
+}
+
+.when-where-hours p {
+  margin: 0;
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  line-height: 1.25;
+  color: var(--text);
+}
+
+.when-where-hours strong {
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.when-where-note {
+  margin-bottom: 1.5rem;
+}
+
+.when-where-hotel {
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 820px) {
+  .when-where-card {
+    padding: 1.35rem;
+  }
+
+  .when-where-hours p {
+    font-size: 1.1rem;
+  }
+}
+
+.apply-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.apply-card-full {
+  width: 100%;
+  text-align: left; /* optional but looks cleaner */
 }
