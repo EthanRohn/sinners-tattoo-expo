@@ -10,6 +10,36 @@
     />
     <meta name="theme-color" content="#0b0b0d" />
 
+    <!-- Meta Pixel Code -->
+    <script>
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod
+            ? n.callMethod.apply(n, arguments)
+            : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(
+        window,
+        document,
+        "script",
+        "https://connect.facebook.net/en_US/fbevents.js",
+      );
+      fbq("init", "1147821836892303");
+      fbq("track", "PageView");
+    </script>
+    <!-- End Meta Pixel Code -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -20,6 +50,15 @@
   </head>
 
   <body>
+    <noscript>
+      <img
+        height="1"
+        width="1"
+        style="display: none"
+        src="https://www.facebook.com/tr?id=1147821836892303&ev=PageView&noscript=1"
+      />
+    </noscript>
+
     <header class="site-header" id="site-header">
       <div class="container header-inner">
         <div class="nav-wrap">
@@ -100,6 +139,10 @@
                   href="https://ticketscandy.com/e/sinners-tattoo-expo-2026-15722"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onclick="
+                    if (typeof fbq === 'function')
+                      fbq('track', 'InitiateCheckout', { location: 'hero' });
+                  "
                 >
                   Get Your Tickets
                 </a>
@@ -288,6 +331,10 @@
               href="https://ticketscandy.com/e/sinners-tattoo-expo-2026-15722"
               target="_blank"
               rel="noopener noreferrer"
+              onclick="
+                if (typeof fbq === 'function')
+                  fbq('track', 'InitiateCheckout', { location: 'headliners' });
+              "
             >
               Get Tickets
             </a>
@@ -440,22 +487,22 @@
               </div>
               <ul class="schedule-list">
                 <li>
-                  <span class="schedule-time">12:00 PM</span>
-                  <span class="schedule-item">Doors Open</span>
+                  <span class="schedule-time">5:00 PM - 7:00 PM</span>
+                  <span class="schedule-item">Kevin Thomas Performance</span>
                 </li>
                 <li>
-                  <span class="schedule-time">2:00 PM</span>
+                  <span class="schedule-time">7:00 PM - 8:00 PM</span>
+                  <span class="schedule-item">Belly Dance Performance</span>
+                </li>
+                <li>
+                  <span class="schedule-time">8:30 PM - 9:00 PM</span>
+                  <span class="schedule-item">Burlesque Dance Perfomance</span>
+                </li>
+                <li>
+                  <span class="schedule-time">9:30 PM</span>
                   <span class="schedule-item"
-                    >[Headliner Artist Appearance]</span
+                    >Awards Best Of Day All Cash Prizes</span
                   >
-                </li>
-                <li>
-                  <span class="schedule-time">5:00 PM</span>
-                  <span class="schedule-item">[Live Feature / Showcase]</span>
-                </li>
-                <li>
-                  <span class="schedule-time">10:00 PM</span>
-                  <span class="schedule-item">Day Close</span>
                 </li>
               </ul>
             </article>
@@ -468,22 +515,25 @@
               </div>
               <ul class="schedule-list">
                 <li>
-                  <span class="schedule-time">12:00 PM</span>
-                  <span class="schedule-item">Doors Open</span>
-                </li>
-                <li>
-                  <span class="schedule-time">1:00 PM</span>
-                  <span class="schedule-item">[Headliner Artist Session]</span>
-                </li>
-                <li>
-                  <span class="schedule-time">5:00 PM</span>
+                  <span class="schedule-time">3:00 PM - 6:00 PM</span>
                   <span class="schedule-item"
-                    >[Special Event / Performance]</span
+                    >DJ and Raffles<br />Keven Thomas Performance</span
                   >
                 </li>
                 <li>
-                  <span class="schedule-time">10:00 PM</span>
-                  <span class="schedule-item">Day Close</span>
+                  <span class="schedule-time">6:30 PM - 7:00 PM</span>
+                  <span class="schedule-item">Belly Dancer Performance</span>
+                </li>
+                <li>
+                  <span class="schedule-time">7:00 PM - 7:30 PM</span>
+                  <span class="schedule-item">Burlesque Dance Performance</span>
+                </li>
+                <li>
+                  <span class="schedule-time">7:30 PM</span>
+                  <span class="schedule-item"
+                    >Awards for Fresh and healed Catagories<br />Best of Day
+                    <br />All cash Prizes</span
+                  >
                 </li>
               </ul>
             </article>
@@ -496,20 +546,19 @@
               </div>
               <ul class="schedule-list">
                 <li>
-                  <span class="schedule-time">12:00 PM</span>
-                  <span class="schedule-item">Doors Open</span>
+                  <span class="schedule-time">3:30 PM - 4:30 PM</span>
+                  <span class="schedule-item">Miss Sinful Beauty Pagent</span>
                 </li>
                 <li>
-                  <span class="schedule-time">12:30 PM</span>
-                  <span class="schedule-item">[Featured Artist Block]</span>
+                  <span class="schedule-time">5:00 PM - 7:30 PM</span>
+                  <span class="schedule-item">Live Music</span>
                 </li>
                 <li>
-                  <span class="schedule-time">3:00 PM</span>
-                  <span class="schedule-item">[Final Showcase / Awards]</span>
-                </li>
-                <li>
-                  <span class="schedule-time">10:00 PM</span>
-                  <span class="schedule-item">Event Close</span>
+                  <span class="schedule-time">8:00 PM</span>
+                  <span class="schedule-item"
+                    >Awards for Fresh Catagories<br />Best of Day<br />All Cash
+                    Prizes</span
+                  >
                 </li>
               </ul>
             </article>
@@ -559,6 +608,12 @@
               href="https://ticketscandy.com/e/sinners-tattoo-expo-2026-15722"
               target="_blank"
               rel="noopener noreferrer"
+              onclick="
+                if (typeof fbq === 'function')
+                  fbq('track', 'InitiateCheckout', {
+                    location: 'tickets_section',
+                  });
+              "
             >
               Get Your Tickets
             </a>
@@ -790,6 +845,10 @@
               href="https://ticketscandy.com/e/sinners-tattoo-expo-2026-15722"
               target="_blank"
               rel="noopener noreferrer"
+              onclick="
+                if (typeof fbq === 'function')
+                  fbq('track', 'InitiateCheckout', { location: 'final_cta' });
+              "
             >
               Get Your Tickets
             </a>
@@ -826,6 +885,10 @@
         href="https://ticketscandy.com/e/sinners-tattoo-expo-2026-15722"
         target="_blank"
         rel="noopener noreferrer"
+        onclick="
+          if (typeof fbq === 'function')
+            fbq('track', 'InitiateCheckout', { location: 'floating_mobile' });
+        "
       >
         Get Tickets
       </a>
