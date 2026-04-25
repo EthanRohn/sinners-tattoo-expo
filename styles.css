@@ -812,6 +812,23 @@ body.menu-open {
   color: var(--text-muted);
 }
 
+.artist-meta {
+  margin: 0.25rem 0 0.4rem;
+
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+
+  color: var(--text-muted);
+}
+
+.artist-img-adjust {
+  filter: brightness(0.58) contrast(1.08) saturate(1.05);
+
+  /* subtle “softening” to mimic grain feel */
+  transform: scale(1.01);
+}
+
 .section-actions {
   display: flex;
   flex-wrap: wrap;
